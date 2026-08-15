@@ -1,1 +1,2 @@
 {"job_id":"52b837b4_2097152","nonce":"00000000deadbeef","worker":"krxYRPV4WQ.0x","pc":0,"found_at":1786792875}
+{"job_id": "TEST_JOB", "nonce": "00000000cafebabe", "worker": "krxYRPV4WQ.0x", "pc": 0}
