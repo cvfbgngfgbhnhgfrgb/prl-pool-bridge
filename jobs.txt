@@ -1,0 +1,2 @@
+{"type":"meta","updated_at":1786792837,"pool":"stratum+tcp://prl.kryptex.network:7048","wallet":"krxYRPV4WQ.0x","pcs":1,"nonce_ranges":[{"pc":0,"nonce_start":"0000000000000000","nonce_end":"ffffffffffffffff"}],"current_job_id":"52b837b4_2097152"}
+{"header":"000040201a45d70437213b2b7e655e50a2969b5dabb9a7101629a4ce257ff68c38af6dbd6bf7d7ea7b1c7b4cc39105f619e63aec2a6f7750bf456f4d4b5a73bfef2b9292634b806a02c90018","height":100109,"job_id":"52b837b4_2097152","target":"00000000000007ffffffffffffffffffffffffffffffffffffffffffffffffff","cert_version":3,"received_at":1786792837}
