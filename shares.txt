@@ -1,0 +1,1 @@
+{"job_id":"e9dfab32_2097152","nonce":"00000000abadcafe","worker":"krxYRPV4WQ.0x","pc":0,"found_at":1786793321}
