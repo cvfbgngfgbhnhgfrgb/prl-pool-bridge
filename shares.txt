@@ -1,0 +1,1 @@
+{"job_id":"52b837b4_2097152","nonce":"00000000deadbeef","worker":"krxYRPV4WQ.0x","pc":0,"found_at":1786792875}
