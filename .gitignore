@@ -1,0 +1,10 @@
+krig-miner
+krig*.tar.gz
+krig-miner-*/
+local-cert.pem
+local-key.pem
+__pycache__/
+*.pyc
+*.log
+Start-Pearl.sh
+config.local.json

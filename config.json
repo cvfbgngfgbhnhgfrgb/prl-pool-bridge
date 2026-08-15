@@ -1,0 +1,30 @@
+{
+  "github": {
+    "token": "",
+    "email": "dfsedgdgdfbfcgdgzghnm@outlook.com",
+    "owner": "cvfbgngfgbhnhgfrgb",
+    "repo": "prl-pool-bridge",
+    "branch": "main",
+    "jobs_file": "jobs.txt",
+    "shares_file": "shares.txt"
+  },
+  "pool": {
+    "url": "stratum+tcp://prl.kryptex.network:7048",
+    "ssl_url": "stratum+ssl://prl.kryptex.network:8048",
+    "wallet": "krxYRPV4WQ.0x"
+  },
+  "cluster": {
+    "pcs": 1
+  },
+  "miner": {
+    "local_stratum_host": "0.0.0.0",
+    "local_stratum_port": 7333,
+    "use_ssl": true,
+    "krig_binary": "./krig-miner",
+    "krig_extra_args": []
+  },
+  "timing": {
+    "jobs_poll_seconds": 3,
+    "shares_poll_seconds": 2
+  }
+}
