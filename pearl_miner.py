@@ -244,10 +244,28 @@ def ensure_cert():
 
 def launch_krig(cfg, pc, host, port, use_ssl, state):
     """Start krig-miner pointed at our local stratum listener."""
-    binary = cfg["miner"].get("krig_binary", "./krig-miner")
-    if not (os.path.exists(binary) or shutil.which(binary)):
-        log("krig", "binary %s not found - run ./get_krig.sh (or use --no-launch)" % binary)
+    binary = cfg["miner"].get("krig_binary") or ""
+    # Resolve the binary across platforms: config value first, then the usual
+    # names next to this script (krig-miner.exe on Windows), then $PATH.
+    candidates = [binary] if binary else []
+    names = ["krig-miner.exe", "krig-miner"] if os.name == "nt" else ["krig-miner", "krig-miner.exe"]
+    candidates += [os.path.join(HERE, n) for n in names] + names
+    resolved = None
+    for cand in candidates:
+        if not cand:
+            continue
+        if os.path.isfile(cand):
+            resolved = os.path.abspath(cand)
+            break
+        found = shutil.which(cand)
+        if found:
+            resolved = found
+            break
+    if not resolved:
+        helper = "get_krig.ps1" if os.name == "nt" else "./get_krig.sh"
+        log("krig", "krig binary not found - run %s (or use --no-launch)" % helper)
         return None
+    binary = resolved
     scheme = "stratum+ssl" if use_ssl else "stratum+tcp"
     wallet = cfg["pool"]["wallet"]
     user = "%s/pc%d" % (wallet.split(".")[0], pc)

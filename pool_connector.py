@@ -256,8 +256,19 @@ def main():
     pcs = max(1, int(pcs or 1))
     log("setup", "%d PC(s) joining -> nonce space split into %d slice(s)" % (pcs, pcs))
     cfg.setdefault("cluster", {})["pcs"] = pcs
-    with open(args.config, "w", encoding="utf-8") as fh:
-        json.dump(cfg, fh, indent=2)
+    # Persist the PC count, but re-read the file from disk first and only touch that
+    # one field. Writing the in-memory cfg would bake the token (merged in from
+    # config.local.json / $GH_TOKEN) into the tracked config and trip GitHub's
+    # push protection on the next commit.
+    try:
+        with open(args.config, "r", encoding="utf-8") as fh:
+            on_disk = json.load(fh)
+        on_disk.setdefault("cluster", {})["pcs"] = pcs
+        on_disk.setdefault("github", {})["token"] = ""
+        with open(args.config, "w", encoding="utf-8") as fh:
+            json.dump(on_disk, fh, indent=2)
+    except Exception as e:
+        log("setup", "could not save pcs to config: %s" % e)
 
     store = store_from_config(cfg)
     store.ensure_file(cfg["github"]["jobs_file"], "")
